@@ -20,7 +20,6 @@ public class Exercise2 {
 				ans.put(arr[i], total);
 			}
 		}
-
 		return ans;
 	}
 
