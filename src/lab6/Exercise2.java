@@ -2,32 +2,35 @@ package lab6;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 public class Exercise2 {
-
-	public static HashMap<Character, Integer> countChars(char[] arr) {
-		HashMap<Character, Integer> ans = new HashMap<Character, Integer>();
-
-		for (int i = 0; i < arr.length; i++) {
-			if (ans.containsKey(arr[i]))
-				continue;
-			else {
-				int total = 0;
-				for (int j = 0; j < arr.length; j++) {
-					if (arr[i] == arr[j])
-						total++;
-				}
-				ans.put(arr[i], total);
+	public static Map<Character, Integer> countChars(char[] arr){
+		Map<Character, Integer> map= new HashMap<>();
+		
+		for(char c: arr) {
+			if(map.containsKey(c)) {
+				map.put(c, map.get(c)+1);
 			}
+			else
+				map.put(c, 1);
 		}
-		return ans;
+		return map;
+		
+	}
+	
+	
+	public static void main(String[] args) {
+		
+		Scanner sc= new Scanner(System.in);
+		System.out.println("Enter a line to count charcters: ");
+		String s=sc.nextLine();
+		char[] ch=s.toCharArray();
+		
+		Map<Character, Integer> m= Exercise2.countChars(ch);
+		sc.close();
+		System.out.println(m);
+		
 	}
 
-	public static void main(String[] args) {
-		char[] ch = { 'a', 'e', 'i', 'z', 'e', 'z', 'z' };
-		HashMap<Character, Integer> ans = Exercise2.countChars(ch);
-		for (Map.Entry<Character, Integer> h : ans.entrySet()) {
-			System.out.println(h);
-		}
-	}
 }
